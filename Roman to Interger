@@ -20,4 +20,18 @@ Given a roman numeral, convert it to an integer.
 
 
 
-# SOLUTION
+# SOLUTION:
+
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        map1 = {"I":1,"V":5,"X":10,"L":50,"C":100,"D":500,"M":1000}
+        total = 0
+        
+        for i in range(len(s)- 1):
+            if map1.get(s[i]) >= map1.get(s[i+1]):
+                total += map1.get(s[i])
+            
+            else :
+                total -= map1.get(s[i])
+                
+        return total + map1.get(s[-1])
